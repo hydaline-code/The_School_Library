@@ -114,7 +114,7 @@ Deploy this project on any server: localhost, live host, cloud host.
 
 Contributions, issues, and feature requests are welcome!
 
-Just visit the [issues page](https://github.com/hydaline-code/School_Library/issues) to chip in your contribution.
+Just visit the [issues page](https://github.com/hydaline-code/The_School_Library/issues) to chip in your contribution.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -128,6 +128,6 @@ Give a ⭐️ if you appreciate this  project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/hydaline-code/The_School_Library/blob/dev/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
