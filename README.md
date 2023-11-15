@@ -1,22 +1,5 @@
 
 
-
-
-## Authors
-
-- [Hydaline](https://github.com/hydaline)
-- [LinkedIn](https://www.linkedin.com/in-hydaline-30518a20/)
-- [Twitter](https://twitter.com/hydaline)
-
-## 🤝 Contributing
-
- Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-
-
-
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
