@@ -3,7 +3,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Veterinary Clinic ](#-Veterinary-Clinic-)
+- [📖 School Library ](#-School-Librarty)
     - [Tech Stack](#tech-stack)
   - [🛠 Built With ](#-built-with-)
     - [Key Features ](#key-features-)
