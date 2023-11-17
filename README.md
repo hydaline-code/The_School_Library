@@ -52,6 +52,7 @@
 
 - **Creation of classes**
 - **Configured the classes  as per the requirements**
+- **Add class decorators**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
