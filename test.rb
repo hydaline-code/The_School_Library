@@ -16,15 +16,14 @@ puts "Capitalized Name: #{capitalized_person.correct_name}"
 capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
 puts "Capitalized and Trimmed Name: #{capitalized_trimmed_person.correct_name}"
 
-
 #  usage
-classroom = Classroom.new("Room 200")
-classroom2 = Classroom.new("Room 202")
+classroom = Classroom.new('Room 200')
+classroom2 = Classroom.new('Room 202')
 
-student1 = Student.new(classroom: classroom, name: 'John', age: 18)
-student2 = Student.new(classroom: classroom, name: 'Alice', age: 17)
-student3 = Student.new(classroom: classroom, name: 'Johnny', age: 28)
-student4 = Student.new(classroom: classroom, name: 'Alic', age: 27)
+student1 = Student.new(classroom:, name: 'John', age: 18)
+student2 = Student.new(classroom:, name: 'Alice', age: 17)
+student3 = Student.new(classroom:, name: 'Johnny', age: 28)
+student4 = Student.new(classroom:, name: 'Alic', age: 27)
 
 classroom.adding_student(student1)
 classroom.adding_student(student2)
@@ -33,14 +32,14 @@ classroom2.adding_student(student4)
 
 puts student1.classroom.label
 puts "Student Name: #{student1.name}"
-puts student2.classroom.label 
+puts student2.classroom.label
 puts student3.classroom.label
 puts student4.classroom.label
 
-puts classroom.students.length 
+puts classroom.students.length
 puts classroom2.students.length
 
-# Example usage
+#  usage
 
 # Create persons
 person1 = Person.new(name: 'chacha', age: 25)
@@ -60,7 +59,5 @@ puts "Rental1 Date: #{rental1.date}"
 puts "Person2's Rentals: #{person2.rentals.map { |r| r.book.title }}"
 puts "Rental2 Date: #{rental2.date}"
 
-
 puts "Book1's Rentals: #{book1.rentals.map { |r| r.person.name }}"
 puts "Book2's Rentals: #{book2.rentals.map { |r| r.person.name }}"
-
