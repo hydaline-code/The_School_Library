@@ -43,8 +43,8 @@ puts classroom2.students.length
 # Example usage
 
 # Create persons
-person1 = Person.new(name: 'John', age: 25)
-person2 = Person.new(name: 'Alice', age: 22)
+person1 = Person.new(name: 'chacha', age: 25)
+person2 = Person.new(name: 'hydae', age: 22)
 
 # Create books
 book1 = Book.new('The Great Gatsby', 'F. Scott Fitzgerald')
@@ -54,9 +54,12 @@ book2 = Book.new('To Kill a Mockingbird', 'Harper Lee')
 rental1 = Rental.new('2023-11-16', person1, book1)
 rental2 = Rental.new('2023-11-17', person2, book2)
 
-# Accessing relationships
+# Associations
 puts "Person1's Rentals: #{person1.rentals.map { |r| r.book.title }}"
+puts "Rental1 Date: #{rental1.date}"
 puts "Person2's Rentals: #{person2.rentals.map { |r| r.book.title }}"
+puts "Rental2 Date: #{rental2.date}"
+
 
 puts "Book1's Rentals: #{book1.rentals.map { |r| r.person.name }}"
 puts "Book2's Rentals: #{book2.rentals.map { |r| r.person.name }}"
