@@ -6,7 +6,7 @@ class Person < Nameable
   attr_reader :id
   attr_reader :rentals
 
-  def initialize (name: 'Unknown', age: 0, parent_permission: true)
+  def initialize(name: 'Unknown', age: 0, parent_permission: true)
     super()
     @id = rand(1000..9999)
     @name = name
@@ -33,5 +33,4 @@ class Person < Nameable
     book.rentals << rental
     rental
   end
-
 end

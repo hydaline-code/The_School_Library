@@ -1,4 +1,3 @@
-
 class Rental
   attr_reader :date, :book, :person
 
@@ -7,6 +6,4 @@ class Rental
     @book = book
     @person = person
   end
-
 end
-
