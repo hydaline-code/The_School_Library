@@ -53,6 +53,7 @@
 - **Creation of classes**
 - **Configured the classes  as per the requirements**
 - **Add class decorators**
+- **Add class a basic ui**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
