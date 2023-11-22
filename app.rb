@@ -62,7 +62,6 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-
     book = Book.new(title, author)
     @books << book
     puts "Book '#{title}' by '#{author}' created."
@@ -74,17 +73,14 @@ class App
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
     person = @people.find { |p| p.id == person_id }
-
     if person.nil?
       puts 'Person is not found.'
       return
     end
-
     list_all_books
     print 'Enter the book Title: '
     book_title = gets.chomp
     book = @books.find { |b| b.title == book_title }
-
     if book.nil?
       puts 'Book not found.'
       return
@@ -92,7 +88,6 @@ class App
 
     print 'Enter rental Date (YYYY-MM-DD): '
     date = gets.chomp
-
     rental = Rental.new(date, book, person)
     @rentals << rental
     puts "Rental created for #{person.name} - #{book.title} on #{date}"
@@ -103,12 +98,10 @@ class App
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
     person = @people.find { |p| p.id == person_id }
-
     if person.nil?
       puts 'Person not found.'
       return
     end
-
     rentals = @rentals.select { |r| r.person == person }
     if rentals.empty?
       puts "#{person.name} has not done any  rentals"
