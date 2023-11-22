@@ -1,23 +1,23 @@
 require_relative 'app'
 
 def main
-  print "***************************************
+  print '***************************************
 *****Welcome to your school Library****
-***************************************"
+***************************************'
 
   app = App.new
 
   loop do
-    puts "\nHere are your options:"
-    puts "1. List all books"
-    puts "2. List all people"
-    puts "3. Create a person"
-    puts "4. Create a book"
-    puts "5. Create a rental"
-    puts "6. List rentals for a person"
-    puts "7. Quit"
+    puts '\nHere are your options:'
+    puts '1. List all books'
+    puts '2. List all people'
+    puts '3. Create a person'
+    puts '4. Create a book'
+    puts '5. Create a rental'
+    puts '6. List rentals for a person'
+    puts '7. Quit'
 
-    print "Enter your choice selecting a number: "
+    print 'Enter your choice selecting a number: '
     choice = gets.chomp.to_i
 
     case choice
@@ -34,10 +34,10 @@ def main
     when 6
       app.list_all_rentals
     when 7
-      puts "Exiting the app. Goodbye!"
+      puts 'Exiting the app. Goodbye!'
       exit
     else
-      puts "Invalid choice. Please enter a number between 1 and 7."
+      puts 'Invalid choice. Please enter a number between 1 and 7.'
     end
   end
 end
