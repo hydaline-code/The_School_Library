@@ -28,7 +28,7 @@ class App
       end
     end
   end
-  
+
   def create_a_person
     print "Enter your name: "
     name = gets.chomp()
@@ -38,7 +38,7 @@ class App
     print "Are you a student or a teacher? (Enter 'student' or 'teacher'): "
     role = gets.chomp.downcase
     puts "You are a : #{role}"
-  
+
     if role == 'student'
       print "Classroom: "
       classroom = gets.chomp()
@@ -51,7 +51,7 @@ class App
       puts "Invalid role"
       return
     end
-  
+
     @people << person
     puts "#{role.capitalize} #{name} created!"
   end
@@ -113,8 +113,8 @@ class App
     if rentals.empty?
       puts "#{person.name} has not done any  rentals"
     else
-    puts "Rentals for #{person.name}: "
-    rentals.each { |rental| puts "#{rental.book.title} - #{rental.date}" }
+      puts "Rentals for #{person.name}: "
+      rentals.each { |rental| puts "#{rental.book.title} - #{rental.date}" }
+    end
   end
-end
 end

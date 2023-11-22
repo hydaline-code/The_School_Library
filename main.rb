@@ -1,10 +1,10 @@
 require_relative 'app'
 
 def main
-print "***************************************
+  print "***************************************
 *****Welcome to your school Library****
 ***************************************"
-  
+
   app = App.new
 
   loop do
