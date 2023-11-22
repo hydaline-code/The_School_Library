@@ -16,7 +16,7 @@ class App
     @books.each { |book| puts "#{book.title} written by: #{book.author}" }
   end
 
-  def list_all_people
+  def list_all_people # rubocop:todo Metrics/MethodLength
     puts 'List of people:'
     @people.each do |person|
       if person.is_a?(Student)
@@ -29,7 +29,7 @@ class App
     end
   end
 
-  def create_a_person
+  def create_a_person # rubocop:todo Metrics/MethodLength
     print 'Enter your name: '
     name = gets.chomp
     print 'Enter your Age: '
@@ -42,7 +42,7 @@ class App
     if role == 'student'
       print 'Classroom: '
       classroom = gets.chomp
-      Student.new(classroom: classroom, name: name, age: age)
+      person = Student.new(classroom: classroom, name: name, age: age)
     elsif role == 'teacher'
       print 'Specialization: '
       specialization = gets.chomp
@@ -51,12 +51,11 @@ class App
       puts 'Invalid role'
       return
     end
-
     @people << person
     puts "#{role.capitalize} #{name} created!"
   end
-
-  def create_book
+ 
+  def create_book  # rubocop:todo Metrics/MethodLength
     puts 'Enter attributes for your book:'
     print 'Title: '
     title = gets.chomp
@@ -67,7 +66,7 @@ class App
     puts "Book '#{title}' by '#{author}' created."
   end
 
-  def create_rental
+  def create_rental # rubocop:todo Metrics/MethodLength
     puts 'Enter the rental details:'
     list_all_people
     print 'Enter a person ID: '
@@ -85,7 +84,6 @@ class App
       puts 'Book not found.'
       return
     end
-
     print 'Enter rental Date (YYYY-MM-DD): '
     date = gets.chomp
     rental = Rental.new(date, book, person)
@@ -93,7 +91,7 @@ class App
     puts "Rental created for #{person.name} - #{book.title} on #{date}"
   end
 
-  def list_all_rentals
+  def list_all_rentals # rubocop:todo Metrics/MethodLength
     list_all_people
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i

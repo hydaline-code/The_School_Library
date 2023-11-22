@@ -1,6 +1,6 @@
 require_relative 'app'
 
-def main
+
   print '***************************************
 *****Welcome to your school Library****
 ***************************************'
@@ -40,6 +40,6 @@ def main
       puts 'Invalid choice. Please enter a number between 1 and 7.'
     end
   end
-end
 
-main
+
+main()
