@@ -30,7 +30,7 @@ class App
     end
   end
 
-  def create_a_person # rubocop:todo Metrics/MethodLength
+  def create_a_person
     print 'Enter your name: '
     name = gets.chomp
     print 'Enter your Age: '
