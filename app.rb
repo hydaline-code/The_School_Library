@@ -67,7 +67,7 @@ class App
     puts "Book '#{title}' by '#{author}' created."
   end
 
-  def create_rental
+  def create_rental # rubocop:todo Metrics/MethodLength
     puts 'Rental details:'
     list_all_people
     print 'Enter a person ID: '
