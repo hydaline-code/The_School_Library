@@ -68,7 +68,7 @@ class App
   end
 
   def create_rental
-    puts 'Enter the rental details:'
+    puts 'Rental details:'
     list_all_people
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
@@ -92,7 +92,7 @@ class App
     puts "Rental created for #{person.name} - #{book.title} on #{date}"
   end
 
-  def list_all_rentals 
+  def list_all_rentals
     list_all_people
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
