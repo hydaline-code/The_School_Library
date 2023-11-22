@@ -22,7 +22,7 @@ class App
       if person.is_a?(Student)
         puts "[Student] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Classroom: #{person.classroom}"
       elsif person.is_a?(Teacher)
-        puts "[Teacher] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, 
+        puts "[Teacher] ID: #{person.id}, Name: #{person.name}, Age: #{person.age},
         Specialization: #{person.specialization}"
       else
         puts 'Invalid either student or teacher please'
@@ -55,7 +55,7 @@ class App
     @people << person
     puts "#{role.capitalize} #{name} created!"
   end
- 
+
   def create_book
     puts 'Enter attributes for your book:'
     print 'Title: '
