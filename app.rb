@@ -16,13 +16,14 @@ class App
     @books.each { |book| puts "#{book.title} written by: #{book.author}" }
   end
 
-  def list_all_people # rubocop:todo Metrics/MethodLength
+  def list_all_people
     puts 'List of people:'
     @people.each do |person|
       if person.is_a?(Student)
         puts "[Student] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Classroom: #{person.classroom}"
       elsif person.is_a?(Teacher)
-        puts "[Teacher] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Specialization: #{person.specialization}"
+        puts "[Teacher] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, 
+        Specialization: #{person.specialization}"
       else
         puts 'Invalid either student or teacher please'
       end
@@ -55,7 +56,7 @@ class App
     puts "#{role.capitalize} #{name} created!"
   end
  
-  def create_book  # rubocop:todo Metrics/MethodLength
+  def create_book
     puts 'Enter attributes for your book:'
     print 'Title: '
     title = gets.chomp

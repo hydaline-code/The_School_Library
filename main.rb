@@ -1,11 +1,10 @@
 require_relative 'app'
 
-
   print '***************************************
 *****Welcome to your school Library****
 ***************************************'
 
-  app = App.new
+app = App.new
 
   loop do
     puts "\nHere are your options:"
@@ -41,5 +40,4 @@ require_relative 'app'
     end
   end
 
-
-main()
+main
