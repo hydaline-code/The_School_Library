@@ -30,7 +30,7 @@ class App
     end
   end
 
-  def create_a_person
+  def create_a_person # rubocop:todo Metrics/MethodLength
     print 'Enter your name: '
     name = gets.chomp
     print 'Enter your Age: '
@@ -67,7 +67,7 @@ class App
     puts "Book '#{title}' by '#{author}' created."
   end
 
-  def create_rental # rubocop:todo Metrics/MethodLength
+  def create_rental
     puts 'Enter the rental details:'
     list_all_people
     print 'Enter a person ID: '
@@ -92,7 +92,7 @@ class App
     puts "Rental created for #{person.name} - #{book.title} on #{date}"
   end
 
-  def list_all_rentals # rubocop:todo Metrics/MethodLength
+  def list_all_rentals 
     list_all_people
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
