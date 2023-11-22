@@ -42,11 +42,11 @@ class App
     if role == 'student'
       print 'Classroom: '
       classroom = gets.chomp
-      person = Student.new(classroom:, name:, age:)
+      Student.new(classroom: classroom, name: name, age: age)
     elsif role == 'teacher'
       print 'Specialization: '
       specialization = gets.chomp
-      person = Teacher.new(name:, age:, specialization:)
+      person = Teacher.new(name: name, age: age, specialization: specialization)
     else
       puts 'Invalid role'
       return
