@@ -69,29 +69,46 @@ class App
     puts "Book '#{title}' by '#{author}' created."
   end
 
-  def create_rental # rubocop:todo Metrics/MethodLength
-    puts 'Rental details:'
-    list_all_people
-    print 'Enter a person ID: '
-    person_id = gets.chomp.to_i
-    person = @people.find { |p| p.id == person_id }
-    if person.nil?
-      puts 'Person is not found.'
-      return
+  # def create_rental # rubocop:todo Metrics/MethodLength
+  #   puts 'Rental details:'
+  #   list_all_people
+  #   print 'Enter a person ID: '
+  #   person_id = gets.chomp.to_i
+  #   person = @people.find { |p| p.id == person_id }
+  #   if person.nil?
+  #     puts 'Person is not found.'
+  #     return
+  #   end
+  #   list_all_books
+  #   print 'Enter the book Title: '
+  #   book_title = gets.chomp
+  #   book = @books.find { |b| b.title == book_title }
+  #   if book.nil?
+  #     puts 'Book not found.'
+  #     return
+  #   end
+  #   print 'Enter rental Date (YYYY-MM-DD): '
+  #   date = gets.chomp
+  #   rental = Rental.new(date, book, person)
+  #   @rentals << rental
+  #   puts "Rental created for #{person.name} - #{book.title} on #{date}"
+  # end
+
+  def create_rental
+    puts "Select a book from the following list by number"
+    @books.each_with_index do |book, index|
+      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
-    list_all_books
-    print 'Enter the book Title: '
-    book_title = gets.chomp
-    book = @books.find { |b| b.title == book_title }
-    if book.nil?
-      puts 'Book not found.'
-      return
+    book_index = gets.chomp.to_i
+    puts "\nSelect a person from the following list by number (not id)"
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-    print 'Enter rental Date (YYYY-MM-DD): '
+    person_index = gets.chomp.to_i
+    print "\nDate: "
     date = gets.chomp
-    rental = Rental.new(date, book, person)
-    @rentals << rental
-    puts "Rental created for #{person.name} - #{book.title} on #{date}"
+    @rentals << Rental.new(date, @books[book_index], @people[person_index])
+    puts "Rental created successfully"
   end
 
   def list_all_rentals
@@ -107,8 +124,8 @@ class App
     if rentals.empty?
       puts "#{person.name} has not done any  rentals"
     else
-      puts "Rentals for #{person.name}: "
-      rentals.each { |rental| puts "#{rental.book.title} - #{rental.date}" }
+      puts "Rentals for: "
+      rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
     end
   end
 end
