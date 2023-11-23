@@ -41,8 +41,8 @@ class App
     age = gets.chomp
     print "Name: "
     name = gets.chomp
-    person = 
-     if person_type == "1"
+    person =
+      if person_type == "1"
         print "Has parent permission? [Y/N]: "
         parent_permission = gets.chomp
         parent_permission = parent_permission.downcase == "y"
@@ -57,7 +57,6 @@ class App
     puts "Person created successfully"
   end
 
-
   def create_book
     puts 'Enter attributes for your book:'
     print 'Title: '
@@ -68,7 +67,7 @@ class App
     @books << book
     puts "Book '#{title}' by '#{author}' created."
   end
-  
+
   def create_rental
     puts "Select a book from the following list by number"
     @books.each_with_index do |book, index|
