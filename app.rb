@@ -30,31 +30,32 @@ class App
     end
   end
 
-  def create_a_person
-    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+  def create_a_person # rubocop:todo Metrics/MethodLength
+    print 'Do you want to create a student (1) or
+    a teacher (2)? [Input the number]: '
     person_type = gets.chomp
-    if person_type != "1" && person_type != "2"
-      puts "Invalid option"
+    if person_type != '1' && person_type != '2'
+      puts 'Invalid option'
       return
     end
-    print "Age: "
+    print 'Age: '
     age = gets.chomp
-    print "Name: "
+    print 'Name: '
     name = gets.chomp
     person =
-      if person_type == "1"
-        print "Has parent permission? [Y/N]: "
+      if person_type == '1'
+        print 'Has parent permission? [Y/N]: '
         parent_permission = gets.chomp
-        parent_permission = parent_permission.downcase == "y"
-        person = Student.new(name: name, age: age, parent_permission: parent_permission)
-      elsif person_type == "2"
-        print "Specialization: "
+        parent_permission = parent_permission.downcase == 'y'
+        Student.new(name:, age:, parent_permission:)
+      elsif person_type == '2'
+        print 'Specialization: '
         specialization = gets.chomp
-        person = Teacher.new(name: name, age: age, specialization: specialization)
+        Teacher.new(name:, age:, specialization:)
       end
 
     @people << person
-    puts "Person created successfully"
+    puts 'Person created successfully'
   end
 
   def create_book
@@ -69,7 +70,7 @@ class App
   end
 
   def create_rental
-    puts "Select a book from the following list by number"
+    puts 'Select a book from the following list by number'
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
@@ -82,7 +83,7 @@ class App
     print "\nDate: "
     date = gets.chomp
     @rentals << Rental.new(date, @books[book_index], @people[person_index])
-    puts "Rental created successfully"
+    puts 'Rental created successfully'
   end
 
   def list_all_rentals
@@ -98,7 +99,7 @@ class App
     if rentals.empty?
       puts "#{person.name} has not done any  rentals"
     else
-      puts "Rentals for: "
+      puts 'Rentals for: '
       rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
     end
   end
