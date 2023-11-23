@@ -68,32 +68,7 @@ class App
     @books << book
     puts "Book '#{title}' by '#{author}' created."
   end
-
-  # def create_rental # rubocop:todo Metrics/MethodLength
-  #   puts 'Rental details:'
-  #   list_all_people
-  #   print 'Enter a person ID: '
-  #   person_id = gets.chomp.to_i
-  #   person = @people.find { |p| p.id == person_id }
-  #   if person.nil?
-  #     puts 'Person is not found.'
-  #     return
-  #   end
-  #   list_all_books
-  #   print 'Enter the book Title: '
-  #   book_title = gets.chomp
-  #   book = @books.find { |b| b.title == book_title }
-  #   if book.nil?
-  #     puts 'Book not found.'
-  #     return
-  #   end
-  #   print 'Enter rental Date (YYYY-MM-DD): '
-  #   date = gets.chomp
-  #   rental = Rental.new(date, book, person)
-  #   @rentals << rental
-  #   puts "Rental created for #{person.name} - #{book.title} on #{date}"
-  # end
-
+  
   def create_rental
     puts "Select a book from the following list by number"
     @books.each_with_index do |book, index|
