@@ -20,41 +20,43 @@ class App
     puts 'List of people:'
     @people.each do |person|
       if person.is_a?(Student)
-        puts "[Student] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Classroom: #{person.classroom}"
+        puts "[Student]  Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       elsif person.is_a?(Teacher)
-        puts "[Teacher] ID: #{person.id}, Name: #{person.name}, Age: #{person.age},
-        Specialization: #{person.specialization}"
+        puts "[Teacher] Name: #{person.name}, ID: #{person.id},  Age: #{person.age},
+        "
       else
         puts 'Invalid either student or teacher please'
       end
     end
   end
 
-  def create_a_person # rubocop:todo Metrics/MethodLength
-    print 'Enter your name: '
-    name = gets.chomp
-    print 'Enter your Age: '
-    age = gets.chomp.to_i
-
-    print "Are you a student or a teacher? (Enter 'student' or 'teacher'): "
-    role = gets.chomp.downcase
-    puts "You are a : #{role}"
-
-    if role == 'student'
-      print 'Classroom: '
-      classroom = gets.chomp
-      person = Student.new(classroom: classroom, name: name, age: age)
-    elsif role == 'teacher'
-      print 'Specialization: '
-      specialization = gets.chomp
-      person = Teacher.new(name: name, age: age, specialization: specialization)
-    else
-      puts 'Invalid role'
+  def create_a_person
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    person_type = gets.chomp
+    if person_type != "1" && person_type != "2"
+      puts "Invalid option"
       return
     end
+    print "Age: "
+    age = gets.chomp
+    print "Name: "
+    name = gets.chomp
+    person = 
+     if person_type == "1"
+        print "Has parent permission? [Y/N]: "
+        parent_permission = gets.chomp
+        parent_permission = parent_permission.downcase == "y"
+        person = Student.new(name: name, age: age, parent_permission: parent_permission)
+      elsif person_type == "2"
+        print "Specialization: "
+        specialization = gets.chomp
+        person = Teacher.new(name: name, age: age, specialization: specialization)
+      end
+
     @people << person
-    puts "#{role.capitalize} #{name} created!"
+    puts "Person created successfully"
   end
+
 
   def create_book
     puts 'Enter attributes for your book:'
