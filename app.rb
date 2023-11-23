@@ -46,11 +46,11 @@ class App
         print 'Has parent permission? [Y/N]: '
         parent_permission = gets.chomp
         parent_permission = parent_permission.downcase == 'y'
-        Student.new(name:, age:, parent_permission:)
+        Student.new(name: name, age: age, parent_permission: parent_permission)
       elsif person_type == '2'
         print 'Specialization: '
         specialization = gets.chomp
-        Teacher.new(name:, age:, specialization:)
+        Teacher.new(name: name, age: age, specialization: specialization)
       end
 
     @people << person

@@ -20,8 +20,8 @@ puts "Capitalized and Trimmed Name: #{capitalized_trimmed_person.correct_name}"
 classroom = Classroom.new('Room 200')
 classroom2 = Classroom.new('Room 202')
 
-student1 = Student.new(classroom:, name: 'John', age: 18)
-student2 = Student.new(classroom:, name: 'Alice', age: 17)
+student1 = Student.new(classroom: classroom, name: 'John', age: 18)
+student2 = Student.new(classroom: classroom, name: 'Alice', age: 17)
 student3 = Student.new(classroom: classroom2, name: 'Johnny', age: 28)
 student4 = Student.new(classroom: classroom2, name: 'Alic', age: 27)
 
