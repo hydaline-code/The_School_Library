@@ -3,23 +3,19 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 School Library ](#-School-Librarty)
-    - [Tech Stack](#tech-stack)
-  - [🛠 Built With ](#-built-with-)
+- [School library with Ruby](#school-library-with-ruby)
+  - [Built With](#built-with)
+    - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Install](#install)
-    - [Usage](#usage)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
   - [👥 Authors ](#-authors-)
-  - [🔭 Future Features](#Future-Features)
+  - [🔭Future Features ](#future-features-)
   - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [📝 License ](#-license-)
+  - [Show your support](#show-your-support)
+  - [Acknowledgments](#acknowledgments)
+  - [📝 License](#-license)
 
 
 
@@ -84,6 +80,12 @@ Deploy this project on any server: localhost, live host, cloud host.
 👤 **Hydaline Charlene**
 
 - GitHub: [Hydaline](https://github.com/hydaline-code)
+
+
+👤 **Shinn Thant Swam Ye**
+
+- GitHub: [@Pi1998](https://github.com/Pi1998)
+- LinkedIn: [Shinn Thant Swam Ye](https://www.linkedin.com/in/shinn-thant-swam-ye-4171a8257/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
