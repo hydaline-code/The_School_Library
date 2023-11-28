@@ -1,4 +1,4 @@
-class Menu 
+class Menu
   def self.display
     puts "\nHere are your options:"
     puts '1. List all books'

@@ -8,10 +8,10 @@ print '***************************************
 
 app = App.new
 
- loop do   
+loop do
   Menu.display
   print 'Enter your choice selecting a number: '
   choice = gets.chomp.to_i
-Choices.user_choices(choice, app)
- end
+  Choices.user_choices(choice, app)
+end
 main

@@ -1,4 +1,5 @@
-class Choices 
+class Choices
+  # rubocop:disable Metrics/CyclomaticComplexity
   def self.user_choices(choice, app)
     case choice
     when 1
@@ -20,4 +21,5 @@ class Choices
       puts 'Invalid choice. Please enter a number between 1 and 7.'
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 end

@@ -16,15 +16,13 @@ class PersonFactory
     end
   end
 
-  private
-
-  def self.create_student(name, age, options)
+  def self.create_student(name, age, _options)
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase == 'y'
     Student.new(name: name, age: age, parent_permission: parent_permission)
   end
 
-  def self.create_teacher(name, age, options)
+  def self.create_teacher(name, age, _options)
     print 'Specialization: '
     specialization = gets.chomp
     Teacher.new(name: name, age: age, specialization: specialization)
@@ -60,24 +58,22 @@ class App
   end
 
   def create_a_person
-    begin
-      print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-      person_type = gets.chomp
-      raise 'Invalid option' unless %w[1 2].include?(person_type)
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    person_type = gets.chomp
+    raise 'Invalid option' unless %w[1 2].include?(person_type)
 
-      print 'Age (must be a positive integer): '
-      age = gets.chomp.to_i
-      raise 'Invalid age' unless age.positive?
+    print 'Age (must be a positive integer): '
+    age = gets.chomp.to_i
+    raise 'Invalid age' unless age.positive?
 
-      print 'Name: '
-      name = gets.chomp
+    print 'Name: '
+    name = gets.chomp
 
-      person = PersonFactory.create_person(person_type, name, age)
-      @people << person
-      puts 'Person created successfully'
-    rescue StandardError => e
-      puts "Error: #{e.message}"
-    end
+    person = PersonFactory.create_person(person_type, name, age)
+    @people << person
+    puts 'Person created successfully'
+  rescue StandardError => e
+    puts "Error: #{e.message}"
   end
 
   def create_book
