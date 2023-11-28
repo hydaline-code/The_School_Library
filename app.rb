@@ -3,6 +3,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'books'
 require_relative 'rental'
+require 'pry'
 
 class App
   def initialize
@@ -31,6 +32,7 @@ class App
   end
 
   def create_a_person # rubocop:todo Metrics/MethodLength
+    binding.pry
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp
     if person_type != '1' && person_type != '2'
@@ -54,6 +56,7 @@ class App
       end
 
     @people << person
+    binding.pry
     puts 'Person created successfully'
   end
 
@@ -65,27 +68,32 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
+    binding.pry
     puts "Book '#{title}' by '#{author}' created."
   end
 
   def create_rental
     puts 'Select a book from the following list by number'
     @books.each_with_index do |book, index|
+      binding.pry
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
     book_index = gets.chomp.to_i
     puts "\nSelect a person from the following list by number (not id)"
     @people.each_with_index do |person, index|
+      binding.pry
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
     print "\nDate: "
     date = gets.chomp
     @rentals << Rental.new(date, @books[book_index], @people[person_index])
+    binding.pry
     puts 'Rental created successfully'
   end
 
   def list_all_rentals
+    binding.pry
     list_all_people
     print 'Enter a person ID: '
     person_id = gets.chomp.to_i
@@ -96,8 +104,10 @@ class App
     end
     rentals = @rentals.select { |r| r.person == person }
     if rentals.empty?
+      binding.pry
       puts "#{person.name} has not done any  rentals"
     else
+      binding.pry
       puts 'Rentals for: '
       rentals.each { |rental| puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" }
     end
