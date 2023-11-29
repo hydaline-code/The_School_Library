@@ -3,6 +3,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'books'
 require_relative 'rental'
+require 'json'
 
 class PersonFactory
   def self.create_person(person_type, name, age, options = {})
@@ -72,6 +73,7 @@ class App
     person = PersonFactory.create_person(person_type, name, age)
     @people << person
     puts 'Person created successfully'
+    save_data_to_json
   rescue StandardError => e
     puts "Error: #{e.message}"
   end
@@ -79,6 +81,7 @@ class App
   def create_book
     @books << BookFactory.create_book
     puts 'Book created successfully.'
+    save_data_to_json
   end
 
   def create_rental
@@ -95,6 +98,7 @@ class App
 
     @rentals << Rental.new(date, @books[book_index], @people[person_index])
     puts 'Rental created successfully'
+    save_data_to_json
   end
 
   def list_all_rentals
@@ -138,5 +142,20 @@ class App
     @people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
+  end
+
+  def save_data_to_json
+    save_to_json('books.json', @books)
+    save_to_json('people.json', @people)
+    save_to_json('rentals.json', @rentals)
+  end
+
+  private
+
+  def save_to_json(filename, data)
+    File.open(filename, 'w') do |file|
+      file.puts JSON.generate(data)
+    end
+    puts "Data saved successfully"
   end
 end
