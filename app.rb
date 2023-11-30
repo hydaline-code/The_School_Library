@@ -47,7 +47,9 @@ class App
     @books = []
     @rentals = []   
 
-    # at_exit {save_data_to_json}
+    load_data_on_startup
+
+    at_exit { save_data_to_json }
   end
 
   def list_all_books
@@ -134,6 +136,8 @@ class App
     end
   end
 
+
+
   def display_book_list
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
@@ -152,6 +156,33 @@ class App
     save_to_json('rentals.json', @rentals)
   end
 
+  def load_data_on_startup
+    load_data('people.json', Person, @people)
+    load_data('books.json', Book, @books)
+    load_data('rentals.json', Rental, @rentals)
+  end
+
+  def load_data(filename, data_type, container)
+    return unless File.exist?(filename)
+
+    file_content = File.read(filename)
+    json_data = JSON.parse(file_content)
+
+    deserialized_data = json_data.map do |json_object|
+      if data_type == Person
+        # For Person class, pass the name and age as arguments
+        Person.new(name: json_object['name'], age: json_object['age'])
+      else
+        # For other classes, pass the entire hash of attributes
+        data_type.new(json_object)
+      end
+    end
+
+    container.concat(deserialized_data)
+  rescue StandardError => e
+    puts "Error loading data from #{filename}: #{e.message}"
+  end
+
 
   private
 
@@ -161,4 +192,10 @@ class App
     end
     puts "Data saved successfully"
   end
+  # Run the app at exit
+
+
 end
+
+
+
