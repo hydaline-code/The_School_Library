@@ -6,24 +6,24 @@ require_relative 'rental'
 require 'json'
 
 class PersonFactory
-  def self.create_person(person_type, name, age, options = {})
+  def self.create_person(person_type, name, age)
     case person_type
     when '1'
-      create_student(name, age, options)
+      create_student(name, age)
     when '2'
-      create_teacher(name, age, options)
+      create_teacher(name, age)
     else
       raise 'Invalid person type'
     end
   end
 
-  def self.create_student(name, age, _options)
+  def self.create_student(name, age)
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase == 'y'
     Student.new(name: name, age: age, parent_permission: parent_permission)
   end
 
-  def self.create_teacher(name, age, _options)
+  def self.create_teacher(name, age)
     print 'Specialization: '
     specialization = gets.chomp
     Teacher.new(name: name, age: age, specialization: specialization)
@@ -45,7 +45,9 @@ class App
   def initialize
     @people = []
     @books = []
-    @rentals = []
+    @rentals = []   
+
+    # at_exit {save_data_to_json}
   end
 
   def list_all_books
@@ -149,6 +151,7 @@ class App
     save_to_json('people.json', @people)
     save_to_json('rentals.json', @rentals)
   end
+
 
   private
 
