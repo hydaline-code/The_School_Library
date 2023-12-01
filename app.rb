@@ -42,12 +42,12 @@ class BookFactory
 end
 
 class App
-  DATA_PATH = './data/'
+  DATA_PATH = './data/'.freeze
 
   def initialize
     @people = []
     @books = []
-    @rentals = []   
+    @rentals = []
 
     load_data_on_startup
 
@@ -68,14 +68,14 @@ class App
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp
     raise 'Invalid option' unless %w[1 2].include?(person_type)
-  
+
     print 'Age (must be a positive integer): '
     age = gets.chomp.to_i
     raise 'Invalid age' unless age.positive?
-  
+
     print 'Name: '
     name = gets.chomp
-  
+
     person = PersonFactory.create_person(person_type, name, age)
     @people << person
     puts 'Person created successfully'
@@ -160,53 +160,62 @@ class App
   end
 
   def save_data_to_json
-    save_to_json(DATA_PATH + 'books.json', @books)
-    save_to_json(DATA_PATH + 'people.json', @people)
-    save_to_json(DATA_PATH + 'rentals.json', @rentals)
+    save_to_json("#{DATA_PATH}books.json", @books)
+    save_to_json("#{DATA_PATH}people.json", @people)
+    save_to_json("#{DATA_PATH}rentals.json", @rentals)
   end
 
   def load_data_on_startup
-    load_data(DATA_PATH + 'people.json', Person, @people)
-    load_data(DATA_PATH + 'books.json', Book, @books)
-    load_data(DATA_PATH + 'rentals.json', Rental, @rentals)
+    load_data("#{DATA_PATH}people.json", Person, @people)
+    load_data("#{DATA_PATH}books.json", Book, @books)
+    load_data("#{DATA_PATH}rentals.json", Rental, @rentals)
   end
 
   def load_data(filename, data_type, container)
     return unless File.exist?(filename)
-  
+
     file_content = File.read(filename)
     json_data = JSON.parse(file_content)
-  
+
     deserialized_data = json_data.map do |json_object|
       case data_type.to_s
       when 'Person'
-        if json_object['type'] == 'student'
-          Student.new(name: json_object['name'], age: json_object['age'])
-        elsif json_object['type'] == 'teacher'
-          Teacher.new(name: json_object['name'], age: json_object['age'], specialization: json_object['specialization'])
-        else
-          nil
-        end
+        load_person(json_object)
       when 'Book'
-        Book.new(json_object['title'], json_object['author'])
+        load_book(json_object)
       when 'Rental'
-        book = find_book_by_title(json_object['book_title'])
-        person = find_person_by_name(json_object['person_name'])
-        Rental.new(json_object['date'], book, person)
-      else
-        nil
+        load_rental(json_object)
       end
     end
-  
+
     container.concat(deserialized_data.compact)
   rescue StandardError => e
     puts "Error loading data from #{filename}: #{e.message}"
+  end
+
+  def load_person(json_object)
+    case json_object['type']
+    when 'student'
+      Student.new(name: json_object['name'], age: json_object['age'])
+    when 'teacher'
+      Teacher.new(name: json_object['name'], age: json_object['age'], specialization: json_object['specialization'])
+    end
+  end
+
+  def load_book(json_object)
+    Book.new(json_object['title'], json_object['author'])
+  end
+
+  def load_rental(json_object)
+    book = find_book_by_title(json_object['book_title'])
+    person = find_person_by_name(json_object['person_name'])
+    Rental.new(json_object['date'], book, person)
   end
 
   def save_to_json(filename, data)
     File.open(filename, 'w') do |file|
       file.puts JSON.generate(data)
     end
-    puts "Data saved successfully"
+    puts 'Data saved successfully'
   end
 end
