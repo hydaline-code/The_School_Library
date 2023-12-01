@@ -9,4 +9,13 @@ class Teacher < Person
   def can_use_services?
     true
   end
+
+  def to_json(*_args)
+    {
+      'type' => 'teacher',
+      'name' => @name,
+      'age' => @age,
+      'id' => @id
+    }.to_json
+  end
 end

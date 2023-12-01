@@ -32,4 +32,17 @@ class Person < Nameable
     book.rentals << rental
     rental
   end
+
+  def to_json(*_args)
+    {
+      'type' => 'person',
+      'name' => @name,
+      'age' => @age,
+      'id' => @id
+    }.to_json
+  end
+
+  def self.find_by_name(people, name)
+    people.find { |person| person.name == name }
+  end
 end

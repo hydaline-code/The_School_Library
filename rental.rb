@@ -6,4 +6,13 @@ class Rental
     @book = book
     @person = person
   end
+
+  def to_json(*_args)
+    {
+      'type' => 'rental',
+      'date' => @date,
+      'book_title' => @book.title,
+      'person_name' => @person.name
+    }.to_json
+  end
 end
