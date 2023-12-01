@@ -42,6 +42,8 @@ class BookFactory
 end
 
 class App
+  DATA_PATH = './data/'
+
   def initialize
     @people = []
     @books = []
@@ -100,7 +102,8 @@ class App
     print "\nDate: "
     date = gets.chomp
 
-    @rentals << Rental.new(date, @books[book_index], @people[person_index])
+    person = find_person_by_name(@people[person_index].name)
+    @rentals << Rental.new(date, @books[book_index], person)
     puts 'Rental created successfully'
     save_data_to_json
   end
@@ -130,18 +133,24 @@ class App
     if person.is_a?(Student)
       "[Student]  Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     elsif person.is_a?(Teacher)
-      "[Teacher] Name: #{person.name}, ID: #{person.id},  Age: #{person.age}"
+      "[Teacher] Name: #{person.name}, ID: #{person.id},  Age: #{person.age}, Specialization: #{person.specialization}"
     else
       'Invalid either student or teacher please'
     end
   end
 
-
+  def find_book_by_title(title)
+    @books.find { |book| book.title == title }
+  end
 
   def display_book_list
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
+  end
+
+  def find_person_by_name(name)
+    @people.find { |person| person.correct_name == name }
   end
 
   def display_people_list
@@ -151,15 +160,15 @@ class App
   end
 
   def save_data_to_json
-    save_to_json('books.json', @books)
-    save_to_json('people.json', @people)
-    save_to_json('rentals.json', @rentals)
+    save_to_json(DATA_PATH + 'books.json', @books)
+    save_to_json(DATA_PATH + 'people.json', @people)
+    save_to_json(DATA_PATH + 'rentals.json', @rentals)
   end
 
   def load_data_on_startup
-    load_data('people.json', Person, @people)
-    load_data('books.json', Book, @books)
-    load_data('rentals.json', Rental, @rentals)
+    load_data(DATA_PATH + 'people.json', Person, @people)
+    load_data(DATA_PATH + 'books.json', Book, @books)
+    load_data(DATA_PATH + 'rentals.json', Rental, @rentals)
   end
 
   def load_data(filename, data_type, container)
@@ -169,12 +178,17 @@ class App
     json_data = JSON.parse(file_content)
 
     deserialized_data = json_data.map do |json_object|
-      if data_type == Person
-        # For Person class, pass the name and age as arguments
+      case data_type.to_s
+      when 'Person'
         Person.new(name: json_object['name'], age: json_object['age'])
+      when 'Book'
+        Book.new(json_object['title'], json_object['author'])
+      when 'Rental'
+        book = find_book_by_title(json_object['book_title']) # Implement find_book_by_title logic
+        person = find_person_by_name(json_object['person_name']) # Implement find_person_by_name logic
+        Rental.new(json_object['date'], book, person)
       else
-        # For other classes, pass the entire hash of attributes
-        data_type.new(json_object)
+        nil 
       end
     end
 
@@ -183,19 +197,10 @@ class App
     puts "Error loading data from #{filename}: #{e.message}"
   end
 
-
-  private
-
   def save_to_json(filename, data)
     File.open(filename, 'w') do |file|
       file.puts JSON.generate(data)
     end
     puts "Data saved successfully"
   end
-  # Run the app at exit
-
-
 end
-
-
-
