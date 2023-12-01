@@ -68,14 +68,14 @@ class App
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp
     raise 'Invalid option' unless %w[1 2].include?(person_type)
-
+  
     print 'Age (must be a positive integer): '
     age = gets.chomp.to_i
     raise 'Invalid age' unless age.positive?
-
+  
     print 'Name: '
     name = gets.chomp
-
+  
     person = PersonFactory.create_person(person_type, name, age)
     @people << person
     puts 'Person created successfully'
@@ -130,9 +130,9 @@ class App
   private
 
   def person_info(person)
-    if person.is_a?(Student)
+    if person.instance_of?(Student)
       "[Student]  Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    elsif person.is_a?(Teacher)
+    elsif person.instance_of?(Teacher)
       "[Teacher] Name: #{person.name}, ID: #{person.id},  Age: #{person.age}, Specialization: #{person.specialization}"
     else
       'Invalid either student or teacher please'
@@ -150,7 +150,7 @@ class App
   end
 
   def find_person_by_name(name)
-    @people.find { |person| person.correct_name == name }
+    @people.find { |person| person.name == name }
   end
 
   def display_people_list
@@ -173,26 +173,32 @@ class App
 
   def load_data(filename, data_type, container)
     return unless File.exist?(filename)
-
+  
     file_content = File.read(filename)
     json_data = JSON.parse(file_content)
-
+  
     deserialized_data = json_data.map do |json_object|
       case data_type.to_s
       when 'Person'
-        Person.new(name: json_object['name'], age: json_object['age'])
+        if json_object['type'] == 'student'
+          Student.new(name: json_object['name'], age: json_object['age'])
+        elsif json_object['type'] == 'teacher'
+          Teacher.new(name: json_object['name'], age: json_object['age'], specialization: json_object['specialization'])
+        else
+          nil
+        end
       when 'Book'
         Book.new(json_object['title'], json_object['author'])
       when 'Rental'
-        book = find_book_by_title(json_object['book_title']) # Implement find_book_by_title logic
-        person = find_person_by_name(json_object['person_name']) # Implement find_person_by_name logic
+        book = find_book_by_title(json_object['book_title'])
+        person = find_person_by_name(json_object['person_name'])
         Rental.new(json_object['date'], book, person)
       else
-        nil 
+        nil
       end
     end
-
-    container.concat(deserialized_data)
+  
+    container.concat(deserialized_data.compact)
   rescue StandardError => e
     puts "Error loading data from #{filename}: #{e.message}"
   end
