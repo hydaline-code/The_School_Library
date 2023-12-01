@@ -50,6 +50,8 @@
 - **Configured the classes  as per the requirements**
 - **Add class decorators**
 - **Add class a basic ui**
+- **Add code refactor**
+- **Preserving data in the app**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -94,7 +96,7 @@ Deploy this project on any server: localhost, live host, cloud host.
   ## 🔭Future Features <a name="Future Features"><a>
 
  - Add testing to the project
- - Add a basic ui
+
 
 
 ## 🤝 Contributing <a name="contributing"></a>
