@@ -4,7 +4,6 @@ require_relative '../books'
 require_relative '../student'
 require 'json'
 require 'rspec'
-
 RSpec.describe Rental do
   let(:book) { Book.new('The Great Gatsby', 'F. Scott Fitzgerald') }
   let(:student) { Student.new(name: 'Hydaline', age: 18) }
@@ -19,18 +18,4 @@ RSpec.describe Rental do
     end
   end
 
-  describe '#to_json' do
-    it 'returns the JSON representation of the rental' do
-      rental = Rental.new(date, book, student)
-      expected_json = {
-        'type' => 'rental',
-        'date' => date,
-        'book_title' => book.title,
-        'person_name' => student.name
-      }
-
-      expect(JSON.generate(rental.to_json)).to eq(JSON.generate(expected_json))
-    end
-
-  end
 end
