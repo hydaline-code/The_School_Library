@@ -1,6 +1,6 @@
-# choices_spec.rb
+
 require_relative '../user_choice'
-require_relative '../app'  # Assuming you have an App class
+require_relative '../app'  
 
 RSpec.describe Choices do
   let(:app) { instance_double('App') }

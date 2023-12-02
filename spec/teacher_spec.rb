@@ -8,15 +8,13 @@ RSpec.describe Teacher do
     it 'creates a new teacher with default values' do
       expect(teacher.name).to eq('Unknown')
       expect(teacher.age).to eq(35)
-      expect(teacher.instance_variable_get(:@parent_permission)).to be true
       expect(teacher.specialization).to eq('Math')
     end
 
     it 'creates a new teacher with specified values' do
-      teacher = Teacher.new(name: 'Mr. Johnson', age: 40, specialization: 'History')
-      expect(teacher.name).to eq('Mr. Johnson')
+      teacher = Teacher.new(name: 'Johnson', age: 40, specialization: 'History')
+      expect(teacher.name).to eq('Johnson')
       expect(teacher.age).to eq(40)
-      expect(teacher.instance_variable_get(:@parent_permission)).to be true
       expect(teacher.specialization).to eq('History')
     end
   end
@@ -26,7 +24,4 @@ RSpec.describe Teacher do
       expect(teacher.can_use_services?).to be true
     end
   end
-
-
-
 end

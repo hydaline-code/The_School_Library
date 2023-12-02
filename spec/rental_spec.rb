@@ -7,7 +7,7 @@ require 'rspec'
 
 RSpec.describe Rental do
   let(:book) { Book.new('The Great Gatsby', 'F. Scott Fitzgerald') }
-  let(:student) { Student.new(name: 'John Doe', age: 18) }
+  let(:student) { Student.new(name: 'Hydaline', age: 18) }
   let(:date) { '2023-12-01' }
 
   describe '#initialize' do
