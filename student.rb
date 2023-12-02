@@ -12,9 +12,17 @@ class Student < Person
     '¯\\(ツ)/¯'
   end
 
+  # def add_a_classroom(classroom)
+  #   @classroom = classroom
+  #   classroom.adding_student(self) unless classroom.students.include?(self)
+  # end
+
   def add_a_classroom(classroom)
+    return if @classroom == classroom
+
+    @classroom&.students&.delete(self)
     @classroom = classroom
-    classroom.adding_student(self) unless classroom.students.include?(self)
+    @classroom&.adding_student(self) unless @classroom.students.include?(self)
   end
 
   def to_json(*_args)

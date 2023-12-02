@@ -31,6 +31,7 @@ RSpec.describe Student do
       expect(classroom.students).to include(student)
     end
 
+
     it 'does not add the student if already in the classroom' do
       classroom = Classroom.new('A102')
       classroom.adding_student(student)
