@@ -1,6 +1,5 @@
-
 require_relative '../capitalize_decorator'
-require_relative '../nameable' 
+require_relative '../nameable'
 
 RSpec.describe CapitalizeDecorator do
   let(:nameable) { instance_double('Nameable', correct_name: 'hydaline') }

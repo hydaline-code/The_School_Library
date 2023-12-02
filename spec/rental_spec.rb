@@ -17,5 +17,4 @@ RSpec.describe Rental do
       expect(rental.person).to eq(student)
     end
   end
-
 end

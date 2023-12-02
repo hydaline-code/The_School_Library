@@ -1,4 +1,3 @@
-
 require_relative '../classroom'
 require_relative '../student'
 require 'rspec'
