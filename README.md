@@ -52,6 +52,7 @@
 - **Add class a basic ui**
 - **Add code refactor**
 - **Preserving data in the app**
+- **Unit testing of the app**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -95,7 +96,7 @@ Deploy this project on any server: localhost, live host, cloud host.
 
   ## 🔭Future Features <a name="Future Features"><a>
 
- - Add testing to the project
+ - Add feature fonctionalities
 
 
 
