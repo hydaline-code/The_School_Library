@@ -3,7 +3,7 @@ require_relative 'person'
 class Student < Person
   attr_reader :classroom
 
-  def initialize(classroom: nil, name: 'Unknown', age: 0, parent_permission: true) # rubocop:disable Lint/UnusedMethodArgument
+  def initialize(classroom: nil, name: 'Unknown', age: 0, parent_permission: true)
     super(name: name, age: age, parent_permission: parent_permission, id: rand(1000..9999))
     @classroom = classroom
   end
