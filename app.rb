@@ -20,13 +20,13 @@ class PersonFactory
   def self.create_student(name, age)
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase == 'y'
-    Student.new(name:, age:, parent_permission:)
+    Student.new(name: name, age: age, parent_permission: parent_permission)
   end
 
   def self.create_teacher(name, age)
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(name:, age:, specialization:)
+    Teacher.new(name: name, age: age, specialization: specialization)
   end
 end
 

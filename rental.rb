@@ -7,7 +7,6 @@ class Rental
     @person = person
   end
 
-
   def to_json(*_args)
     {
       'type' => 'rental',
