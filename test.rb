@@ -21,7 +21,7 @@ classroom = Classroom.new('Room 200')
 classroom2 = Classroom.new('Room 202')
 
 student1 = Student.new(classroom: nil, name: 'John', age: 18)
-student2 = Student.new(classroom:, name: 'Alice', age: 17)
+student2 = Student.new(classroom: nil, name: 'Alice', age: 17)
 student3 = Student.new(classroom: classroom2, name: 'Johnny', age: 28)
 student4 = Student.new(classroom: classroom2, name: 'Alic', age: 27)
 
